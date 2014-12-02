@@ -1,0 +1,22 @@
+name: vs-appengine-go
+version: 0.0.2
+inherits: wercker/golang@1.2.3
+type: service
+platform: ubuntu@12.04
+description: wercker box for testing appengine applications written in golang
+keywords:
+  - appengine
+  - golang
+  - go
+packages:
+  - python@2.7.3
+script: |
+  sdk_version="1.9.15"
+  zip_file="go_appengine_sdk_linux_amd64-${sdk_version}.zip"
+
+  pushd /tmp/
+  wget https://storage.googleapis.com/appengine-sdks/featured/${zip_file}
+  unzip ${zip_file}
+  export PATH=/tmp/go_appengine:$PATH
+env:
+  APPENGINE_VERSION: "1.9.15"
