@@ -23,7 +23,6 @@ script: |
   echo "export PATH=$PATH:/usr/local/go_appengine" | sudo tee -a /etc/profile
   rm ${zip_file}
 
-  source /etc/profile
-  goapp version
+  /usr/local/go_appengine/goapp version
 env:
   APPENGINE_VERSION: "1.9.15"
